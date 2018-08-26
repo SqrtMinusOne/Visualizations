@@ -4,13 +4,12 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 
-def main():
+def main(file_name):
     # params
-    file_name = 'confa2.txt'
     L = 30
     plot_first = True
     plot_second = True
-    only_final = True
+    only_final = False
 
     # init
     file = open(file_name, 'r')
@@ -111,4 +110,4 @@ def main():
                     plt.savefig('fig2/fig{0:5}'.format(i))
     plt.show()
 
-main()
+main("confa2.txt")
