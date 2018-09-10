@@ -9,7 +9,7 @@ def main(file_name):
     L = 30
     plot_first = True
     plot_second = True
-    only_final = False
+    only_final = True
 
     # init
     file = open(file_name, 'r')
@@ -25,16 +25,12 @@ def main(file_name):
 
     # variables
     names = []  # All names
-    names_count = 0  # Length of names
     freq = []  # Frequency of names
     months_count = [0] * 12  # Messages per month
     hours_count = [0] * 24  # Messages per hours
     last_ones = queue.Queue(L + 1)  # Last L days message count
-    this_day_freq = []  # Frequency for this day
-    last_days = queue.Queue(L + 1)  # Frequencies for last L days
 
     prev_day = 0
-    prev_month = 0
     this_day = 0
     i = 0
     k = 0
@@ -52,7 +48,7 @@ def main(file_name):
         if line[0].isnumeric():
             i = i + 1
             hour = int(line[0:2])
-            minute = int(line[3:5])
+            #  minute = int(line[3:5])
             day = int(line[10:12])
             month = int(line[13:15])
             year = int(line[16:21])
@@ -78,10 +74,6 @@ def main(file_name):
                 prev_day = day
                 plot_here = True
             this_day = this_day + 1
-
-            # if prev_month != month:
-                # prev_month = month
-                # plot_here = True
 
             if plot_here and not only_final or only_final and final:
                 plot_here = False
@@ -110,4 +102,4 @@ def main(file_name):
                     plt.savefig('fig2/fig{0:5}'.format(i))
     plt.show()
 
-main("confa2.txt")
+main("confa3.txt")
